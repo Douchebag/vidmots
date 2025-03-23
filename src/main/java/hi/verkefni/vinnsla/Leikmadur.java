@@ -3,6 +3,9 @@ package hi.verkefni.vinnsla;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Leikmadur klasinn sér um leikmann og stadsetningu leikmanns
  */
@@ -11,6 +14,9 @@ public class Leikmadur {
     private static final int MAX = 24;
     private static int stadsetningarReitur;
     private SimpleIntegerProperty reitur;
+    private Item bestaVopn;
+    private Item bestaBrynja;
+    private List<Item> collectedItems = new ArrayList<>();
 
     /**
      * Smidur fyrir Leikmann
@@ -32,6 +38,21 @@ public class Leikmadur {
             reitur.set(nyReitur);
         } else {
             reitur.set(max);
+        }
+    }
+
+    public void pickupItem(Item item) {
+        collectedItems.add(item);
+        if (item.getType() == Item.ItemType.WEAPON) {
+            if (bestaVopn == null || item.getBonus() > bestaVopn.getBonus()) {
+                bestaVopn = item;
+                System.out.println(getLeikmadur() + " uppfærði besta vopn í: " + bestaVopn);
+            }
+        } else if (item.getType() == Item.ItemType.ARMOUR) {
+            if (bestaBrynja == null || item.getBonus() > bestaBrynja.getBonus()) {
+                bestaBrynja = item;
+                System.out.println(getLeikmadur() + " uppfærði besta brynju í: " + bestaBrynja);
+            }
         }
     }
 

@@ -62,6 +62,34 @@ public class Items {
         }
     }
 
+    public Item getItemAtTile(int tile) {
+        if (items.containsKey(tile)) {
+            Item pickedItem = items.get(tile);
+            skrefUppl.set("Þú fékkst: " + pickedItem.toString());
+            items.remove(tile);
+            return pickedItem;
+        } else {
+            skrefUppl.set("Enginn hlutur á reit " + tile);
+            return null;
+        }
+    }
+
+    /**
+     * skilar iteminu á tile-i, notað fyrir að setja items á borðið
+     * @param tile
+     * @return
+     */
+    public Item getItemAtTileForDisplay(int tile) {
+        if (items.containsKey(tile)) {
+            Item pickedItem = items.get(tile);
+            skrefUppl.set("Þú fékkst: " + pickedItem.toString());
+            return pickedItem;
+        } else {
+            skrefUppl.set("Enginn hlutur á reit " + tile);
+            return null;
+        }
+    }
+
     /**
      * Skilar reitnum sem leikmaður lendir á. Ef reiturinn hefur einhver item, birtir hann skilaboð um hvaða item var tekið upp
      * og fjarlægir iteminn úr borðinu svo hann verði ekki tekinn upp tvisvar.

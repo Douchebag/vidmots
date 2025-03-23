@@ -1,5 +1,6 @@
 package hi.verkefni.vidmot;
 
+import hi.verkefni.vinnsla.Item;
 import hi.verkefni.vinnsla.Leikur;
 import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
@@ -11,6 +12,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 
 import java.util.List;
 
@@ -56,6 +58,8 @@ public class SlangaController {
 
         addPlayerPiecesToGrid();
 
+        populateBoardWithItems();
+
         leikur.getLeikmadurReiturProperty(0).addListener((obs, oldValue, newValue) -> {
             movePlayerPiece(player1Piece, newValue.intValue());
         });
@@ -63,6 +67,32 @@ public class SlangaController {
         leikur.getLeikmadurReiturProperty(1).addListener((obs, oldValue, newValue) -> {
             movePlayerPiece(player2Piece, newValue.intValue());
         });
+    }
+
+    /**
+     * bætir við item myndum á tile í GridPane.
+     */
+    private void populateBoardWithItems() {
+        for (Node node : fxLeikjabord.getChildren()) {
+            if (node instanceof Pane) {
+                Pane tilePane = (Pane) node;
+                if (!tilePane.getChildren().isEmpty() && tilePane.getChildren().get(0) instanceof Label) {
+                    Label tileLabel = (Label) tilePane.getChildren().get(0);
+                    try {
+                        int tileNumber = Integer.parseInt(tileLabel.getText());
+                        Item item = leikur.getBord().getItemAtTileForDisplay(tileNumber);
+                        if (item != null) {
+                            ImageView itemIcon = new ImageView(new Image(getClass().getResource(
+                                    "/hi/verkefni/vidmot/myndir/" + item.getName().replaceAll("\\s+", "") + ".png").toExternalForm()));
+                            itemIcon.setFitHeight(40);
+                            itemIcon.setFitWidth(40);
+                            tilePane.getChildren().add(itemIcon);
+                        }
+                    } catch (NumberFormatException e) {
+                    }
+                }
+            }
+        }
     }
 
     /**
@@ -117,6 +147,7 @@ public class SlangaController {
     @FXML
     protected void nyrLeikurHandler(ActionEvent event) {
         leikur.nyrLeikur();
+        populateBoardWithItems();
     }
 
     /**

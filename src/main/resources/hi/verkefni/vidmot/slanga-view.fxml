@@ -40,23 +40,13 @@
                   <children><Label styleClass="numberedPaneLabel" text="22" /></children>
               </Pane>
               <Pane prefHeight="200.0" prefWidth="200.0" styleClass="cell-color-two" GridPane.columnIndex="3" GridPane.rowIndex="0">
-                  <children><Label styleClass="numberedPaneLabel" text="21" />
-                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" styleClass="stigiOgSnakur">
-                     <image>
-                        <Image url="@myndir/snake.png" />
-                     </image>
-                  </ImageView></children>
+                  <children><Label styleClass="numberedPaneLabel" text="21" /></children>
               </Pane>
               <Pane prefHeight="200.0" prefWidth="200.0" styleClass="cell-color-one" GridPane.columnIndex="4" GridPane.rowIndex="0">
                   <children><Label styleClass="numberedPaneLabel" text="20" /></children>
               </Pane>
               <Pane prefHeight="200.0" prefWidth="200.0" styleClass="cell-color-two" GridPane.columnIndex="5" GridPane.rowIndex="0">
-                  <children><Label styleClass="numberedPaneLabel" text="19" />
-                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" styleClass="stigiOgSnakur">
-                     <image>
-                        <Image url="@myndir/snake.png" />
-                     </image>
-                  </ImageView></children>
+                  <children><Label styleClass="numberedPaneLabel" text="19" /></children>
               </Pane>
 
               <!-- Row 1 -->
@@ -73,12 +63,7 @@
                   <children><Label styleClass="numberedPaneLabel" text="16" /></children>
               </Pane>
               <Pane prefHeight="200.0" prefWidth="200.0" styleClass="cell-color-two" GridPane.columnIndex="4" GridPane.rowIndex="1">
-                  <children><Label styleClass="numberedPaneLabel" text="17" />
-                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" styleClass="stigiOgSnakur">
-                     <image>
-                        <Image url="@myndir/snake.png" />
-                     </image>
-                  </ImageView></children>
+                  <children><Label styleClass="numberedPaneLabel" text="17" /></children>
               </Pane>
               <Pane prefHeight="200.0" prefWidth="200.0" styleClass="cell-color-one" GridPane.columnIndex="5" GridPane.rowIndex="1">
                   <children><Label styleClass="numberedPaneLabel" text="18" /></children>
@@ -89,12 +74,7 @@
                   <children><Label styleClass="numberedPaneLabel" text="12" /></children>
               </Pane>
               <Pane prefHeight="200.0" prefWidth="200.0" styleClass="cell-color-two" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                  <children><Label styleClass="numberedPaneLabel" text="11" />
-                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" styleClass="stigiOgSnakur">
-                     <image>
-                        <Image url="@myndir/stigi.png" />
-                     </image>
-                  </ImageView></children>
+                  <children><Label styleClass="numberedPaneLabel" text="11" /></children>
               </Pane>
               <Pane prefHeight="200.0" prefWidth="200.0" styleClass="cell-color-one" GridPane.columnIndex="2" GridPane.rowIndex="2">
                   <children><Label styleClass="numberedPaneLabel" text="10" /></children>
@@ -123,12 +103,7 @@
                   <children><Label styleClass="numberedPaneLabel" text="4" /></children>
               </Pane>
               <Pane prefHeight="200.0" prefWidth="200.0" styleClass="cell-color-two" GridPane.columnIndex="4" GridPane.rowIndex="3">
-                  <children>
-                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" styleClass="stigiOgSnakur">
-                     <image>
-                        <Image url="@myndir/stigi.png" />
-                     </image>
-                  </ImageView><Label styleClass="numberedPaneLabel" text="5" /></children>
+                  <children><Label styleClass="numberedPaneLabel" text="5" /></children>
               </Pane>
               <Pane prefHeight="200.0" prefWidth="200.0" styleClass="cell-color-one" GridPane.columnIndex="5" GridPane.rowIndex="3">
                   <children><Label styleClass="numberedPaneLabel" text="6" /></children>

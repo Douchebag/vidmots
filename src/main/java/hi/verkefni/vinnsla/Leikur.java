@@ -12,7 +12,7 @@ import java.util.Scanner;
  */
 public class Leikur {
     private Items bord;
-    private int[] leikmenn;
+    private Leikmadur[] leikmenn;
     private int nuverandiLeikmadur;
     private Teningur teningur;
     private SimpleBooleanProperty leikLokid;
@@ -29,12 +29,16 @@ public class Leikur {
      */
     public Leikur(int fjoldiLeikmanna) {
         bord = new Items();
-        leikmenn = new int[fjoldiLeikmanna];
+        leikmenn = new Leikmadur[fjoldiLeikmanna];
+        for (int i = 0; i < fjoldiLeikmanna; i++) {
+            leikmenn[i] = new Leikmadur("Leikmadur " + (i + 1));
+        }
+
         leikmennProperties = new SimpleIntegerProperty[fjoldiLeikmanna];
         for (int i = 0; i < fjoldiLeikmanna; i++) {
-            leikmenn[i] = 1;
             leikmennProperties[i] = new SimpleIntegerProperty(1);
         }
+
         teningur = new Teningur();
         leikLokid = new SimpleBooleanProperty(false);
         sigurvegari = new SimpleStringProperty();
@@ -49,7 +53,6 @@ public class Leikur {
      */
     public void nyrLeikur() {
         for (int i = 0; i < leikmenn.length; i++) {
-            leikmenn[i] = 1;
             leikmennProperties[i].set(1);
         }
         leikLokid.set(false);
@@ -74,11 +77,9 @@ public class Leikur {
 
         faeraLeikmann(kast);
 
-        if (leikmenn[nuverandiLeikmadur] >= 24) {
+        if (leikmennProperties[nuverandiLeikmadur].get() >= 24) {
             leikLokid.set(true);
-            sigurvegari.set("Leikmadur " + (nuverandiLeikmadur + 1));
-            //System.out.println("DEBUG: leikLokid is now: " + leikLokid.get());
-            //System.out.println(sigurvegari.get() + " hefur unnid!");
+            sigurvegari.set(leikmenn[nuverandiLeikmadur].getLeikmadur());
             skilabod2.set(sigurvegari.get() + " hefur unnid!");
             return true;
         }
@@ -97,33 +98,24 @@ public class Leikur {
 
     /**
      * Faerir leikmann eftir thvi sem hann faer ur teningakasti
+     * kallar á pickupItem til að sækja item (ef einhver)
      * og uppfaerir skilabodin fyrir labelin i vidmotinu
      * @param kast upphaed fra teninga kasti
      */
     private void faeraLeikmann(int kast) {
-        int nyrReitur = leikmenn[nuverandiLeikmadur] + kast;
-        int tempReitur = leikmenn[nuverandiLeikmadur];
+        int nuverandiReitur = leikmennProperties[nuverandiLeikmadur].get();
+        int nyrReitur = nuverandiReitur + kast;
 
-        leikmenn[nuverandiLeikmadur] = bord.getLendingarReitur(nyrReitur);
-        leikmennProperties[nuverandiLeikmadur].set(leikmenn[nuverandiLeikmadur]);
-
-        if (tempReitur > leikmenn[nuverandiLeikmadur]) {
-            skilabod1.set("Leikmadur " + (nuverandiLeikmadur + 1) + " for nidur slöngu og er nu a reit " + leikmenn[nuverandiLeikmadur]);
-        }
-        else if (leikmenn[nuverandiLeikmadur] - tempReitur > 6) {
-            skilabod1.set("Leikmadur " + (nuverandiLeikmadur + 1) + " for upp stiga og er nu a reit " + leikmenn[nuverandiLeikmadur]);
-        }
-        else {
+        Item pickedItem = bord.getItemAtTile(nyrReitur);
+        if (pickedItem != null) {
+            leikmenn[nuverandiLeikmadur].pickupItem(pickedItem);
+            skilabod1.set(leikmenn[nuverandiLeikmadur].getLeikmadur()
+                    + " fékk " + pickedItem.toString()
+                    + " á reit " + nyrReitur);
+        } else {
             skilabod1.set("");
         }
-
-        /**
-        System.out.println("-------------------");
-        System.out.println("tempreitur: " + tempReitur);
-        System.out.println("nyrReitur: " + leikmenn[nuverandiLeikmadur]);
-        System.out.println(skilabod1.get());
-        System.out.println("Leikmadur " + (nuverandiLeikmadur + 1) + " er nu a reit " + leikmenn[nuverandiLeikmadur]);
-        System.out.println("-------------------");**/
+        leikmennProperties[nuverandiLeikmadur].set(nyrReitur);
     }
 
     /**
@@ -166,6 +158,10 @@ public class Leikur {
      */
     public IntegerProperty getLeikmadurReiturProperty(int index) {
         return leikmennProperties[index];
+    }
+
+    public Items getBord() {
+        return bord;
     }
 
     /**
