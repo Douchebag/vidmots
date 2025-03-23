@@ -1,0 +1,81 @@
+.game-grid {
+    -fx-background-color: lightgray;
+}
+
+.game-grid-cell {
+    -fx-border-color: black;
+    -fx-border-width: 1;
+}
+
+.cell-color-one {
+    -fx-background-color: lightblue;
+    -fx-border-color: black;
+    -fx-border-width: 1;
+}
+
+.cell-color-two {
+    -fx-background-color: orange;
+    -fx-border-color: black;
+    -fx-border-width: 1;
+}
+
+.skilabod-label {
+    -fx-min-width: 349px;
+    -fx-label-padding: 5px;
+    -fx-font-size: 16px;
+    -fx-min-height: 60px;
+    -fx-text-alignment: center;
+    -fx-border-color: black;
+    -fx-border-width: 1;
+    -fx-background-color: lightgray;
+}
+
+.skilabod-vbox {
+    -fx-padding: 10px;
+    -fx-spacing: 10;
+}
+
+.takkar-hbox {
+    -fx-padding: 10px;
+    -fx-spacing: 10;
+    -fx-min-width: 230;
+}
+
+.nyrLeikur-takki {
+    -fx-min-width: 70;
+    -fx-min-height: 130;
+    -fx-wrap-text: true;
+    -fx-font-size: 16;
+}
+
+.teningur-takki {
+    -fx-min-width: 130;
+    -fx-min-height: 130;
+    -fx-max-width: 130;
+    -fx-max-height: 130;
+    -fx-padding: 0;
+    -fx-background-color: transparent;
+    -fx-border-width: 0;
+}
+
+.teningur {
+    -fx-fit-to-height: 130;
+    -fx-fit-to-width: 170;
+}
+
+.numberedPaneLabel {
+    -fx-font-size: 20px;
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
+    -fx-text-alignment: center;
+    -fx-padding: 10;
+}
+
+.stigiOgSnakur {
+    -fx-pref-width: 40px;
+    -fx-pref-height: 40px;
+    -fx-translate-x: 50;
+    -fx-translate-y: 10;
+    -fx-fit-to-width: 40;
+    -fx-fit-to-height: 40;
+}

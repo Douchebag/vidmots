@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="690.0" prefWidth="600.0" stylesheets="@css/slanga.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hi.verkefni.vidmot.SlangaController">
+   <children>
+      <GridPane fx:id="fxLeikjabord" prefHeight="599.0" prefWidth="600.0" styleClass="game-grid">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="215.0" minHeight="10.0" percentHeight="25.0" prefHeight="119.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="242.0" minHeight="0.0" prefHeight="120.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="360.0" minHeight="10.0" percentHeight="25.0" prefHeight="119.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="360.0" minHeight="10.0" percentHeight="25.0" prefHeight="183.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+          <children>
+              <!-- Row 0 -->
+              <Pane prefHeight="200.0" prefWidth="100.0" styleClass="cell-color-one" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                  <children><Label styleClass="numberedPaneLabel" text="24" /></children>
+              </Pane>
+              <Pane prefHeight="200.0" prefWidth="200.0" styleClass="cell-color-two" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                  <children><Label styleClass="numberedPaneLabel" text="23" /></children>
+              </Pane>
+              <Pane prefHeight="200.0" prefWidth="200.0" styleClass="cell-color-one" GridPane.columnIndex="2" GridPane.rowIndex="0">
+                  <children><Label styleClass="numberedPaneLabel" text="22" /></children>
+              </Pane>
+              <Pane prefHeight="200.0" prefWidth="200.0" styleClass="cell-color-two" GridPane.columnIndex="3" GridPane.rowIndex="0">
+                  <children><Label styleClass="numberedPaneLabel" text="21" />
+                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" styleClass="stigiOgSnakur">
+                     <image>
+                        <Image url="@myndir/snake.png" />
+                     </image>
+                  </ImageView></children>
+              </Pane>
+              <Pane prefHeight="200.0" prefWidth="200.0" styleClass="cell-color-one" GridPane.columnIndex="4" GridPane.rowIndex="0">
+                  <children><Label styleClass="numberedPaneLabel" text="20" /></children>
+              </Pane>
+              <Pane prefHeight="200.0" prefWidth="200.0" styleClass="cell-color-two" GridPane.columnIndex="5" GridPane.rowIndex="0">
+                  <children><Label styleClass="numberedPaneLabel" text="19" />
+                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" styleClass="stigiOgSnakur">
+                     <image>
+                        <Image url="@myndir/snake.png" />
+                     </image>
+                  </ImageView></children>
+              </Pane>
+
+              <!-- Row 1 -->
+              <Pane prefHeight="200.0" prefWidth="200.0" styleClass="cell-color-two" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                  <children><Label styleClass="numberedPaneLabel" text="13" /></children>
+              </Pane>
+              <Pane prefHeight="200.0" prefWidth="200.0" styleClass="cell-color-one" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <children><Label styleClass="numberedPaneLabel" text="14" /></children>
+              </Pane>
+              <Pane prefHeight="200.0" prefWidth="200.0" styleClass="cell-color-two" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                  <children><Label styleClass="numberedPaneLabel" text="15" /></children>
+              </Pane>
+              <Pane prefHeight="200.0" prefWidth="200.0" styleClass="cell-color-one" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                  <children><Label styleClass="numberedPaneLabel" text="16" /></children>
+              </Pane>
+              <Pane prefHeight="200.0" prefWidth="200.0" styleClass="cell-color-two" GridPane.columnIndex="4" GridPane.rowIndex="1">
+                  <children><Label styleClass="numberedPaneLabel" text="17" />
+                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" styleClass="stigiOgSnakur">
+                     <image>
+                        <Image url="@myndir/snake.png" />
+                     </image>
+                  </ImageView></children>
+              </Pane>
+              <Pane prefHeight="200.0" prefWidth="200.0" styleClass="cell-color-one" GridPane.columnIndex="5" GridPane.rowIndex="1">
+                  <children><Label styleClass="numberedPaneLabel" text="18" /></children>
+              </Pane>
+
+              <!-- Row 2 -->
+              <Pane prefHeight="200.0" prefWidth="200.0" styleClass="cell-color-one" GridPane.columnIndex="0" GridPane.rowIndex="2">
+                  <children><Label styleClass="numberedPaneLabel" text="12" /></children>
+              </Pane>
+              <Pane prefHeight="200.0" prefWidth="200.0" styleClass="cell-color-two" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <children><Label styleClass="numberedPaneLabel" text="11" />
+                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" styleClass="stigiOgSnakur">
+                     <image>
+                        <Image url="@myndir/stigi.png" />
+                     </image>
+                  </ImageView></children>
+              </Pane>
+              <Pane prefHeight="200.0" prefWidth="200.0" styleClass="cell-color-one" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                  <children><Label styleClass="numberedPaneLabel" text="10" /></children>
+              </Pane>
+              <Pane prefHeight="200.0" prefWidth="200.0" styleClass="cell-color-two" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                  <children><Label styleClass="numberedPaneLabel" text="9" /></children>
+              </Pane>
+              <Pane prefHeight="200.0" prefWidth="200.0" styleClass="cell-color-one" GridPane.columnIndex="4" GridPane.rowIndex="2">
+                  <children><Label styleClass="numberedPaneLabel" text="8" /></children>
+              </Pane>
+              <Pane prefHeight="200.0" prefWidth="200.0" styleClass="cell-color-two" GridPane.columnIndex="5" GridPane.rowIndex="2">
+                  <children><Label styleClass="numberedPaneLabel" text="7" /></children>
+              </Pane>
+
+              <!-- Row 3 -->
+              <Pane prefHeight="200.0" prefWidth="200.0" styleClass="cell-color-two" GridPane.columnIndex="0" GridPane.rowIndex="3">
+                  <children><Label styleClass="numberedPaneLabel" text="1" /></children>
+              </Pane>
+              <Pane prefHeight="200.0" prefWidth="200.0" styleClass="cell-color-one" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                  <children><Label styleClass="numberedPaneLabel" text="2" /></children>
+              </Pane>
+              <Pane prefHeight="200.0" prefWidth="200.0" styleClass="cell-color-two" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                  <children><Label styleClass="numberedPaneLabel" text="3" /></children>
+              </Pane>
+              <Pane prefHeight="200.0" prefWidth="200.0" styleClass="cell-color-one" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                  <children><Label styleClass="numberedPaneLabel" text="4" /></children>
+              </Pane>
+              <Pane prefHeight="200.0" prefWidth="200.0" styleClass="cell-color-two" GridPane.columnIndex="4" GridPane.rowIndex="3">
+                  <children>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" styleClass="stigiOgSnakur">
+                     <image>
+                        <Image url="@myndir/stigi.png" />
+                     </image>
+                  </ImageView><Label styleClass="numberedPaneLabel" text="5" /></children>
+              </Pane>
+              <Pane prefHeight="200.0" prefWidth="200.0" styleClass="cell-color-one" GridPane.columnIndex="5" GridPane.rowIndex="3">
+                  <children><Label styleClass="numberedPaneLabel" text="6" /></children>
+              </Pane>
+          </children>
+      </GridPane>
+      <HBox prefHeight="210.0" prefWidth="600.0" style="-fx-border-color: black;">
+         <children>
+            <VBox prefHeight="149.0" prefWidth="370.0" styleClass="skilabod-vbox">
+               <children>
+                  <Label fx:id="fxSkilabod1" minHeight="47.0" prefHeight="47.0" prefWidth="349.0" styleClass="skilabod-label" text="skilabod 1" />
+                  <Label fx:id="fxSkilabod2" layoutX="10.0" layoutY="10.0" styleClass="skilabod-label" text="skilabod 2" />
+               </children>
+            </VBox>
+            <HBox prefHeight="150.0" prefWidth="230.0" styleClass="takkar-hbox">
+               <children>
+                  <Button fx:id="fxNyrLeikurTakki" mnemonicParsing="false" onAction="#nyrLeikurHandler" styleClass="nyrLeikur-takki" text="Nýr Leikur" />
+                  <Button fx:id="fxTeningurTakki" mnemonicParsing="false" onAction="#teningurHandler" styleClass="teningur-takki">
+                     <graphic>
+                        <ImageView fx:id="fxTeningur" fitHeight="130.0" fitWidth="190.0" pickOnBounds="true" preserveRatio="true" styleClass="teningur">
+                         <image>
+                             <Image url="@myndir/1.jpg" />
+                         </image>
+                        </ImageView>
+                     </graphic></Button>
+               </children>
+            </HBox>
+         </children></HBox>
+   </children>
+</VBox>
