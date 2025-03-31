@@ -80,6 +80,11 @@ public class MainController {
                     Label tileLabel = (Label) tilePane.getChildren().get(0);
                     try {
                         int tileNumber = Integer.parseInt(tileLabel.getText());
+
+                        while (tilePane.getChildren().size() > 1) {
+                            tilePane.getChildren().remove(1);
+                        }
+
                         Item item = leikur.getBord().getItemAtTileForDisplay(tileNumber);
                         if (item != null) {
                             ImageView itemIcon = new ImageView(new Image(getClass().getResource(
@@ -152,10 +157,12 @@ public class MainController {
 
     /**
      * Atburdarhandler fyrir teninga takkann
+     * kallar líka á populateBoardWithItems til ad eyða myndunum af items sem voru pickud upp
      * @param event atburdur sem kallar á handlerinn
      */
     @FXML
     protected void teningurHandler(ActionEvent event) {
         leikur.leikaLeik();
+        Platform.runLater(() -> populateBoardWithItems());
     }
 }
