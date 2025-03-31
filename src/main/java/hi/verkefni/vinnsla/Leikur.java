@@ -5,6 +5,8 @@ import hi.verkefni.vidmot.ViewSwitcher;
 import javafx.beans.property.*;
 
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -101,6 +103,10 @@ public class Leikur {
             }
             sigurvegari.set(leikmenn[winnerIndex].getLeikmadur());
             //skilabod2.set(sigurvegari.get() + " hefur unnid!");
+            List<Leikmadur> players = new ArrayList<>();
+            players.add(leikmenn[0]);
+            players.add(leikmenn[1]);
+            ViewSwitcher.setData(players);
             ViewSwitcher.switchTo(View.FIGHT);
             return true;
         }

@@ -10,7 +10,7 @@ import java.util.List;
  * Leikmadur klasinn sér um leikmann og stadsetningu leikmanns
  */
 public class Leikmadur {
-    private static SimpleStringProperty leikmadur = new SimpleStringProperty("");
+    private SimpleStringProperty leikmadur = new SimpleStringProperty("");
     private static final int MAX = 24;
     private static int stadsetningarReitur;
     private SimpleIntegerProperty reitur;
@@ -78,6 +78,22 @@ public class Leikmadur {
      */
     public int getStadsetningarReitur() {
         return reitur.get();
+    }
+
+    /**
+     * Skilar besta vopninu sem leikmadurinn hefur
+     * @return besta vopninu
+     */
+    public Item getBestaVopn() {
+        return bestaVopn;
+    }
+
+    /**
+     * Skilar bestu brynjunni sem leikmadurinn hefur
+     * @return bestu brynjunni
+     */
+    public Item getBestaBrynja() {
+        return bestaBrynja;
     }
 
     /**
