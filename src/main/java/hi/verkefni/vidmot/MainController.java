@@ -20,7 +20,7 @@ import java.util.List;
  * Stýriklasi fyrir Snáka og Stiga leikinn.
  * Sér um viðmótsuppfærslur.
  */
-public class SlangaController {
+public class MainController {
     @FXML
     private Label fxSkilabod1;
     @FXML

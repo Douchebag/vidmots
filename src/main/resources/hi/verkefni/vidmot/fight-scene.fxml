@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox alignment="CENTER" prefHeight="408.0" prefWidth="506.0" spacing="20" style="-fx-padding: 20;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hi.verkefni.vidmot.FightSceneController">
+    <children>
+        <!-- Leikmadur 1 -->
+        <VBox alignment="CENTER" spacing="10">
+            <children>
+                <Label text="Leikmaður 1" />
+                <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                   <image>
+                      <Image url="@myndir/player1.jpg" />
+                   </image>
+                </ImageView>
+                <Label styleClass="label" text="Best Items:" />
+            <GridPane>
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+               <children>
+                  <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0" />
+                  <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" />
+               </children>
+            </GridPane>
+
+            <Label styleClass="label" text="Stats:" />
+            <GridPane>
+                <columnConstraints>
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                </columnConstraints>
+                <children>
+                    <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0">
+                        <children>
+                            <Label text="Strength: " />
+                        </children>
+                    </Pane>
+                    <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+                        <children>
+                            <Label text="Defence: " />
+                        </children>
+                    </Pane>
+                </children>
+               <rowConstraints>
+                  <RowConstraints />
+               </rowConstraints>
+            </GridPane>
+            </children>
+        </VBox>
+
+        <!-- Fight Log -->
+        <VBox alignment="CENTER" spacing="10">
+            <children>
+                <Label text="Fight Log" />
+            <TextArea editable="false" prefHeight="200.0" prefWidth="200.0" wrapText="true" />
+            </children>
+        </VBox>
+
+        <!-- Leikmadur 2 -->
+        <VBox alignment="CENTER" spacing="10">
+            <children>
+                <Label text="Leikmaður 2" />
+                <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@myndir/player2.jpg" />
+                    </image>
+                </ImageView>
+                <Label styleClass="label" text="Best Items:" />
+                <GridPane>
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <children>
+                        <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0" />
+                        <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" />
+                    </children>
+                </GridPane>
+
+                <Label styleClass="label" text="Stats:" />
+                <GridPane>
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+               <children>
+                  <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0">
+                      <children>
+                          <Label text="Strength: " />
+                      </children>
+                  </Pane>
+                   <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+                       <children>
+                           <Label text="Defence: " />
+                       </children>
+                   </Pane>
+               </children>
+               <rowConstraints>
+                  <RowConstraints />
+               </rowConstraints>
+                </GridPane>
+            </children>
+        </VBox>
+    </children>
+</HBox>

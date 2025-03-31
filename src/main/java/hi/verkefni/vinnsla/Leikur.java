@@ -1,5 +1,7 @@
 package hi.verkefni.vinnsla;
 
+import hi.verkefni.vidmot.View;
+import hi.verkefni.vidmot.ViewSwitcher;
 import javafx.beans.property.*;
 
 import java.nio.charset.StandardCharsets;
@@ -75,12 +77,31 @@ public class Leikur {
         int kast = teningur.getTala().get();
         kastaNidurstada.set(kast);
 
-        faeraLeikmann(kast);
+        if (leikmennProperties[nuverandiLeikmadur].get() < 24) {
+            faeraLeikmann(kast);
+        } else {
+            skilabod1.set(leikmenn[nuverandiLeikmadur].getLeikmadur() + " hefur klárað borðið.");
+        }
 
-        if (leikmennProperties[nuverandiLeikmadur].get() >= 24) {
+        boolean allFinished = true;
+        for (SimpleIntegerProperty pos : leikmennProperties) {
+            if (pos.get() < 24) {
+                allFinished = false;
+                break;
+            }
+        }
+
+        if (allFinished) {
             leikLokid.set(true);
-            sigurvegari.set(leikmenn[nuverandiLeikmadur].getLeikmadur());
-            skilabod2.set(sigurvegari.get() + " hefur unnid!");
+            int winnerIndex = 0;
+            for (int i = 1; i < leikmennProperties.length; i++) {
+                if (leikmennProperties[i].get() > leikmennProperties[winnerIndex].get()) {
+                    winnerIndex = i;
+                }
+            }
+            sigurvegari.set(leikmenn[winnerIndex].getLeikmadur());
+            //skilabod2.set(sigurvegari.get() + " hefur unnid!");
+            ViewSwitcher.switchTo(View.FIGHT);
             return true;
         }
 
