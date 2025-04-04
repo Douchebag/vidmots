@@ -104,8 +104,8 @@ public class MainController {
      * Setur leikmennina á bordid
      */
     private void addPlayerPiecesToGrid() {
-        player1Piece = new ImageView(new Image(getClass().getResource("/hi/verkefni/vidmot/myndir/player1.jpg").toExternalForm()));
-        player2Piece = new ImageView(new Image(getClass().getResource("/hi/verkefni/vidmot/myndir/player2.jpg").toExternalForm()));
+        player1Piece = new ImageView(new Image(getClass().getResource("/hi/verkefni/vidmot/myndir/player1.png").toExternalForm()));
+        player2Piece = new ImageView(new Image(getClass().getResource("/hi/verkefni/vidmot/myndir/player2.png").toExternalForm()));
 
         player1Piece.setFitHeight(50);
         player1Piece.setFitWidth(50);

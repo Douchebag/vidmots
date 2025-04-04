@@ -8,6 +8,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
 import java.util.List;
 
@@ -49,21 +50,26 @@ public class FightSceneController {
 
                 if (player1.getBestaVopn() != null) {
                     ImageView weaponImageView = createImageViewForItem(player1.getBestaVopn());
+                    weaponImageView.getStyleClass().add("item-image-view");
                     p1ItemPane1.getChildren().add(weaponImageView);
+
                 }
                 if (player1.getBestaBrynja() != null) {
                     ImageView armourImageView = createImageViewForItem(player1.getBestaBrynja());
                     p1ItemPane2.getChildren().add(armourImageView);
+                    armourImageView.getStyleClass().add("item-image-view");
                 }
                 p1StrengthLabel.setText("Strength: " + (player1.getBestaVopn() != null ? player1.getBestaVopn().getBonus() : 0));
                 p1DefenceLabel.setText("Defence: " + (player1.getBestaBrynja() != null ? player1.getBestaBrynja().getBonus() : 0));
 
                 if (player2.getBestaVopn() != null) {
                     ImageView weaponImageView = createImageViewForItem(player2.getBestaVopn());
+                    weaponImageView.getStyleClass().add("item-image-view");
                     p2ItemPane1.getChildren().add(weaponImageView);
                 }
                 if (player2.getBestaBrynja() != null) {
                     ImageView armourImageView = createImageViewForItem(player2.getBestaBrynja());
+                    armourImageView.getStyleClass().add("item-image-view");
                     p2ItemPane2.getChildren().add(armourImageView);
                 }
 

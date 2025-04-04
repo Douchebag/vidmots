@@ -1,0 +1,89 @@
+.game-grid {
+    -fx-background-color: #3A3A3A;
+    -fx-padding: 5;
+}
+
+.game-grid-cell {
+    -fx-border-color: #2A2A2A;
+    -fx-border-width: 2;
+}
+
+.cell-color-one {
+    -fx-background-color: #5A4C42;
+    -fx-border-color: #3B2F2F;
+    -fx-border-width: 2;
+}
+
+.cell-color-two {
+    -fx-background-color: #4D3A32;
+    -fx-border-color: #3B2F2F;
+    -fx-border-width: 2;
+}
+
+.skilabod-label {
+    -fx-min-width: 349px;
+    -fx-label-padding: 5px;
+    -fx-font-size: 18px;
+    -fx-font-family: "Old English Text MT", serif;
+    -fx-min-height: 60px;
+    -fx-text-alignment: center;
+    -fx-border-color: #2A2A2A;
+    -fx-border-width: 2;
+    -fx-background-color: #2D2D2D;
+    -fx-text-fill: #E0C068;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.75), 4, 0, 0, 1);
+}
+
+.skilabod-vbox {
+    -fx-padding: 10px;
+    -fx-spacing: 10px;
+    -fx-background-color: #2D2D2D;
+    -fx-border-color: #2A2A2A;
+    -fx-border-width: 2;
+}
+
+.takkar-hbox {
+    -fx-padding: 10px;
+    -fx-spacing: 10px;
+    -fx-min-width: 230px;
+    -fx-background-color: #2D2D2D;
+    -fx-border-color: #2A2A2A;
+    -fx-border-width: 2;
+}
+
+.nyrLeikur-takki {
+    -fx-min-width: 70px;
+    -fx-min-height: 130px;
+    -fx-wrap-text: true;
+    -fx-font-size: 16px;
+    -fx-font-family: "Old English Text MT", serif;
+    -fx-background-color: #6D4C41;
+    -fx-text-fill: #E0C068;
+    -fx-border-color: #3B2F2F;
+    -fx-border-width: 2;
+}
+
+.teningur-takki {
+    -fx-min-width: 130px;
+    -fx-min-height: 130px;
+    -fx-max-width: 130px;
+    -fx-max-height: 130px;
+    -fx-padding: 0;
+    -fx-background-color: transparent;
+    -fx-border-width: 0;
+}
+
+.teningur {
+    -fx-fit-to-height: 130;
+    -fx-fit-to-width: 170;
+}
+
+.numberedPaneLabel {
+    -fx-font-size: 20px;
+    -fx-font-family: "Old English Text MT", serif;
+    -fx-text-fill: #E0C068;
+    -fx-font-weight: bold;
+    -fx-text-alignment: right;
+    -fx-padding: 10px;
+    -fx-translate-x: 60px;
+}

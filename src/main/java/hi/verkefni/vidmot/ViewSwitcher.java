@@ -3,6 +3,7 @@ package hi.verkefni.vidmot;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 
@@ -40,6 +41,11 @@ public class ViewSwitcher {
             Parent root = FXMLLoader.load(ViewSwitcher.class.getResource("/hi/verkefni/vidmot/" + view.getFileName()));
 
             scene.setRoot(root);
+
+            if (view == View.FIGHT) {
+                Stage stage = (Stage) scene.getWindow();
+                stage.setHeight(470);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
