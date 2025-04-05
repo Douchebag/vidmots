@@ -45,6 +45,7 @@ public class ViewSwitcher {
             if (view == View.FIGHT) {
                 Stage stage = (Stage) scene.getWindow();
                 stage.setHeight(470);
+                stage.setWidth(800);
             }
         } catch (IOException e) {
             e.printStackTrace();

@@ -2,6 +2,8 @@ package hi.verkefni.vidmot;
 
 import hi.verkefni.vinnsla.Item;
 import hi.verkefni.vinnsla.Leikmadur;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
@@ -9,6 +11,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.util.List;
 
@@ -37,14 +40,19 @@ public class FightSceneController {
     @FXML
     private TextArea fightLogTextArea;
 
+    private Leikmadur player1;
+    private Leikmadur player2;
+    private int player1HP = 99;
+    private int player2HP = 99;
+
     @FXML
     public void initialize() {
         Object data = ViewSwitcher.getCurrentData();
         if (data instanceof List) {
             List<Leikmadur> players = (List<Leikmadur>) data;
             if (players.size() >= 2) {
-                Leikmadur player1 = players.get(0);
-                Leikmadur player2 = players.get(1);
+                player1 = players.get(0);
+                player2 = players.get(1);
                 //System.out.println("leikmadur 1 besta vopn: " + player1.getBestaVopn());
                 //System.out.println("leikmadur 2 besta vopn: " + player2.getBestaVopn());
 
@@ -76,6 +84,66 @@ public class FightSceneController {
                 p2StrengthLabel.setText("Strength: " + (player2.getBestaVopn() != null ? player2.getBestaVopn().getBonus() : 0));
                 p2DefenceLabel.setText("Defence: " + (player2.getBestaBrynja() != null ? player2.getBestaBrynja().getBonus() : 0));
             }
+        }
+        startFight();
+    }
+
+    private void startFight() {
+        boolean firstAttackerIsP1 = Math.random() < 0.5;
+
+        final Timeline timeline = new Timeline();
+        KeyFrame keyFrame = new KeyFrame(Duration.seconds(1), event -> {
+            int damageToP1 = 0;
+            int damageToP2 = 0;
+
+            if (firstAttackerIsP1) {
+                damageToP2 = calculateDamage(player1, player2);
+                player2HP -= damageToP2;
+                damageToP1 = calculateDamage(player2, player1);
+                player1HP -= damageToP1;
+            } else {
+                damageToP1 = calculateDamage(player2, player1);
+                player1HP -= damageToP1;
+                damageToP2 = calculateDamage(player1, player2);
+                player2HP -= damageToP2;
+            }
+
+            if (firstAttackerIsP1) {
+                fightLogTextArea.appendText("Player 1 hits Player 2 for " + damageToP2 + " damage. (Player 2 HP: " + player2HP + ")\n");
+                fightLogTextArea.appendText("Player 2 hits Player 1 for " + damageToP1 + " damage. (Player 1 HP: " + player1HP + ")\n\n");
+            } else {
+                fightLogTextArea.appendText("Player 2 hits Player 1 for " + damageToP1 + " damage. (Player 1 HP: " + player1HP + ")\n");
+                fightLogTextArea.appendText("Player 1 hits Player 2 for " + damageToP2 + " damage. (Player 2 HP: " + player2HP + ")\n\n");
+            }
+
+            if (player1HP <= 0 || player2HP <= 0) {
+                if (player1HP <= 0 && player2HP <= 0) {
+                    fightLogTextArea.appendText((firstAttackerIsP1 ? "Player 1" : "Player 2") + " vann!\n");
+                } else if (player1HP <= 0) {
+                    fightLogTextArea.appendText("Player 2 vann!\n");
+                } else {
+                    fightLogTextArea.appendText("Player 1 vann!\n");
+                }
+                timeline.stop();
+            }
+
+        });
+        timeline.getKeyFrames().add(keyFrame);
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.play();
+    }
+
+    private int calculateDamage(Leikmadur attacker, Leikmadur defender) {
+        int attackBonus = (attacker.getBestaVopn() != null ? attacker.getBestaVopn().getBonus() : 5);
+        int defenseBonus = (defender.getBestaBrynja() != null ? defender.getBestaBrynja().getBonus() : 5);
+
+        double hitChance = (double) attackBonus / (attackBonus + defenseBonus + 10);
+
+        if (Math.random() < hitChance) {
+            int maxHit = (int) (attackBonus * 0.2) + 1;
+            return (int) (Math.random() * maxHit) + 1;
+        } else {
+            return 0;
         }
     }
 
