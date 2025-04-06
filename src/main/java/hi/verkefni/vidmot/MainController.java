@@ -28,8 +28,6 @@ public class MainController {
     @FXML
     private GridPane fxLeikjabord;
     @FXML
-    private Button fxNyrLeikurTakki;
-    @FXML
     private Button fxTeningurTakki;
     @FXML
     private ImageView fxTeningur;
@@ -46,8 +44,6 @@ public class MainController {
      */
     public void initialize() {
         reitir = fxLeikjabord.getChildren();
-        fxNyrLeikurTakki.disableProperty().bind(Bindings.not(leikur.getLeikLokid()));
-        fxTeningurTakki.disableProperty().bind(Bindings.not(fxNyrLeikurTakki.disableProperty()));
 
         fxTeningur.imageProperty().bind(Bindings.createObjectBinding(() ->
                         new Image(getClass().getResource("/hi/verkefni/vidmot/myndir/" + leikur.kastaNidurstadaProperty().get() + ".jpg").toExternalForm()),
@@ -143,16 +139,6 @@ public class MainController {
             GridPane.setRowIndex(playerPiece, finalRow);
             GridPane.setColumnIndex(playerPiece, finalCol);
         });
-    }
-
-    /**
-     * Atburdarhandler fyrir nyrLeikur takkann
-     * @param event atburdur sem kallar á handlerinn
-     */
-    @FXML
-    protected void nyrLeikurHandler(ActionEvent event) {
-        leikur.nyrLeikur();
-        populateBoardWithItems();
     }
 
     /**

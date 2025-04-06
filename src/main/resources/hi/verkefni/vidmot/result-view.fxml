@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="hi.verkefni.vidmot.ResultController"
-            prefHeight="400.0" prefWidth="600.0">
-
-</AnchorPane>
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="251.0" prefWidth="372.0" styleClass="skilabod-vbox" stylesheets="@css/bord.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hi.verkefni.vidmot.ResultController">
+    <children>
+        <Label fx:id="fxResultLabel" styleClass="skilabod-label" text="" />
+        <HBox prefHeight="100.0" prefWidth="200.0" styleClass="takkar-hbox">
+            <children>
+                <Button fx:id="fxNyrLeikurTakki" mnemonicParsing="false" onAction="#nyrLeikurHandler" prefHeight="130.0" prefWidth="157.0" styleClass="nyrLeikur-takki" text="Nýr Leikur" />
+                <Button onAction="#HaettaHandler" mnemonicParsing="false" prefHeight="130.0" prefWidth="157.0" styleClass="nyrLeikur-takki" text="Hætta" />
+            </children>
+        </HBox>
+    </children>
+</VBox>

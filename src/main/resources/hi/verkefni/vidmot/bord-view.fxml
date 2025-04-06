@@ -103,27 +103,23 @@
               </Pane>
           </children>
       </GridPane>
-      <HBox prefHeight="210.0" prefWidth="600.0" style="-fx-border-color: black;">
+      <HBox alignment="CENTER_RIGHT" prefHeight="210.0" prefWidth="600.0" style="-fx-border-color: black;">
          <children>
-            <VBox prefHeight="149.0" prefWidth="370.0" styleClass="skilabod-vbox">
+            <VBox prefHeight="149.0" prefWidth="370.0" styleClass="skilabod-vbox" HBox.hgrow="ALWAYS">
                <children>
-                  <Label fx:id="fxSkilabod1" minHeight="47.0" prefHeight="47.0" prefWidth="349.0" styleClass="skilabod-label" text="skilabod 1" />
-                  <Label fx:id="fxSkilabod2" layoutX="10.0" layoutY="10.0" styleClass="skilabod-label" text="skilabod 2" />
+                  <Label fx:id="fxSkilabod1" minHeight="47.0" prefHeight="60.0" prefWidth="442.0" styleClass="skilabod-label" text="skilabod 1" />
+                  <Label fx:id="fxSkilabod2" layoutX="10.0" layoutY="10.0" prefWidth="442.0" styleClass="skilabod-label" text="skilabod 2" />
                </children>
             </VBox>
-            <HBox prefHeight="150.0" prefWidth="230.0" styleClass="takkar-hbox">
-               <children>
-                  <Button fx:id="fxNyrLeikurTakki" mnemonicParsing="false" onAction="#nyrLeikurHandler" styleClass="nyrLeikur-takki" text="Nýr Leikur" />
-                  <Button fx:id="fxTeningurTakki" mnemonicParsing="false" onAction="#teningurHandler" styleClass="teningur-takki">
-                     <graphic>
-                        <ImageView fx:id="fxTeningur" fitHeight="130.0" fitWidth="190.0" pickOnBounds="true" preserveRatio="true" styleClass="teningur">
-                         <image>
-                             <Image url="@myndir/1.jpg" />
-                         </image>
-                        </ImageView>
-                     </graphic></Button>
-               </children>
-            </HBox>
+            <Button fx:id="fxTeningurTakki" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false" onAction="#teningurHandler" styleClass="teningur-takki">
+               <graphic>
+                  <ImageView fx:id="fxTeningur" fitWidth="160.0" pickOnBounds="true" preserveRatio="true" styleClass="teningur">
+                   <image>
+                       <Image url="@myndir/1.jpg" />
+                   </image>
+                  </ImageView>
+               </graphic>
+            </Button>
          </children></HBox>
    </children>
 </VBox>

@@ -15,6 +15,7 @@ public class MainApplication extends Application {
         var scene = new Scene(new Pane());
 
         // Setjum senuna sem núverandi senu
+        stage.setScene(scene);
         ViewSwitcher.setScene(scene);
 
         // skiptum yfir í viðmótstré fyrir LOGIN

@@ -38,16 +38,6 @@
     -fx-padding: 10;
 }
 
-.button {
-    -fx-background-color: #6D4C41;
-    -fx-text-fill: #E0C068;
-    -fx-font-family: "Old English Text MT", serif;
-    -fx-font-size: 16px;
-    -fx-border-color: #3B2F2F;
-    -fx-border-width: 2;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.75), 4, 0, 0, 1);
-}
-
 .stats-gp {
     -fx-max-height: 20;
 }

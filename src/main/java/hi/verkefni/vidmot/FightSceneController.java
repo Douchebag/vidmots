@@ -117,14 +117,17 @@ public class FightSceneController {
             }
 
             if (player1HP <= 0 || player2HP <= 0) {
+                String resultMessage;
                 if (player1HP <= 0 && player2HP <= 0) {
-                    fightLogTextArea.appendText((firstAttackerIsP1 ? "Player 1" : "Player 2") + " vann!\n");
+                    resultMessage = ((firstAttackerIsP1 ? "Player 1" : "Player 2") + " vann!\n");
                 } else if (player1HP <= 0) {
-                    fightLogTextArea.appendText("Player 2 vann!\n");
+                    resultMessage = ("Player 2 vann!\n");
                 } else {
-                    fightLogTextArea.appendText("Player 1 vann!\n");
+                    resultMessage = ("Player 1 vann!\n");
                 }
+                fightLogTextArea.appendText(resultMessage + "\n");
                 timeline.stop();
+                ViewSwitcher.switchTo(View.RESULT, resultMessage);
             }
 
         });
