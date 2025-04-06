@@ -103,10 +103,10 @@ public class MainController {
         player1Piece = new ImageView(new Image(getClass().getResource("/hi/verkefni/vidmot/myndir/player1.png").toExternalForm()));
         player2Piece = new ImageView(new Image(getClass().getResource("/hi/verkefni/vidmot/myndir/player2.png").toExternalForm()));
 
-        player1Piece.setFitHeight(50);
-        player1Piece.setFitWidth(50);
-        player2Piece.setFitHeight(50);
-        player2Piece.setFitWidth(50);
+        player1Piece.setFitHeight(100);
+        player1Piece.setFitWidth(60);
+        player2Piece.setFitHeight(100);
+        player2Piece.setFitWidth(60);
 
         movePlayerPiece(player1Piece, 1);
         movePlayerPiece(player2Piece, 1);

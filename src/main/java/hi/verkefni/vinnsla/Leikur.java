@@ -102,7 +102,6 @@ public class Leikur {
                 }
             }
             sigurvegari.set(leikmenn[winnerIndex].getLeikmadur());
-            //skilabod2.set(sigurvegari.get() + " hefur unnid!");
             List<Leikmadur> players = new ArrayList<>();
             players.add(leikmenn[0]);
             players.add(leikmenn[1]);
