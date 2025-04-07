@@ -96,6 +96,10 @@ public class Leikmadur {
         return bestaBrynja;
     }
 
+    public void setLeikmadur(SimpleStringProperty leikmadur) {
+        this.leikmadur = leikmadur;
+    }
+
     /**
      * prufunartilvik
      * @param args

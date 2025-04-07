@@ -29,13 +29,14 @@ public class Leikur {
 
     /**
      * Smidur fyrir Leikur sem frumstillir bordid, leikmann o.fl.
-     * @param fjoldiLeikmanna fjoldi leikmanna (alltaf 2 hja okkur)
+     * @param playerNames nöfn leikmanna
      */
-    public Leikur(int fjoldiLeikmanna) {
+    public Leikur(String[] playerNames) {
+        int fjoldiLeikmanna = playerNames.length;
         bord = new Items();
         leikmenn = new Leikmadur[fjoldiLeikmanna];
         for (int i = 0; i < fjoldiLeikmanna; i++) {
-            leikmenn[i] = new Leikmadur("Leikmadur " + (i + 1));
+            leikmenn[i] = new Leikmadur(playerNames[i]);
         }
 
         leikmennProperties = new SimpleIntegerProperty[fjoldiLeikmanna];
@@ -61,7 +62,7 @@ public class Leikur {
         }
         leikLokid.set(false);
         sigurvegari.set("");
-        naestiLeikmadur.set("Leikmadur 1");
+        naestiLeikmadur.set(leikmenn[0].getLeikmadur());
         nuverandiLeikmadur = 0;
         skilabod1.set("");
         skilabod2.set("");
@@ -149,7 +150,12 @@ public class Leikur {
      */
     private void setjaNaestaLeikmann() {
         nuverandiLeikmadur = (nuverandiLeikmadur + 1) % leikmenn.length;
-        naestiLeikmadur.set("Leikmadur " + (nuverandiLeikmadur + 1));
+        if (nuverandiLeikmadur == 0) {
+            naestiLeikmadur.set(leikmenn[0].getLeikmadur());
+        } else {
+            naestiLeikmadur.set(leikmenn[1].getLeikmadur());
+        }
+
         //System.out.println("Naesti leikmadur er " + naestiLeikmadur.get());
         skilabod2.set("Naesti leikmadur er " + naestiLeikmadur.get());
     }
@@ -190,25 +196,7 @@ public class Leikur {
         return bord;
     }
 
-    /**
-     * prufunartilvik
-     * @param args
-     */
-    public static void main(String[] args) {
-        Leikur leikur = new Leikur(2);
-        leikur.nyrLeikur();
-
-        Scanner scanner = new Scanner(System.in, StandardCharsets.UTF_8);
-        System.out.print("A naesti leikmadur ad gera? (j/n) ");
-        String svar = scanner.next();
-
-        while ("j".equalsIgnoreCase(svar)) {
-            if (leikur.leikaLeik()) {
-                System.out.println(leikur.sigurvegari.get() + " kominn i mark!");
-                return;
-            }
-            System.out.print("A naesti leikmadur ad gera? (j/n) ");
-            svar = scanner.next();
-        }
+    public Leikmadur getLeikmadur(int numer) {
+        return leikmenn[numer];
     }
 }

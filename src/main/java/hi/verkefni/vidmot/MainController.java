@@ -1,6 +1,7 @@
 package hi.verkefni.vidmot;
 
 import hi.verkefni.vinnsla.Item;
+import hi.verkefni.vinnsla.Leikmadur;
 import hi.verkefni.vinnsla.Leikur;
 import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
@@ -28,8 +29,6 @@ public class MainController {
     @FXML
     private GridPane fxLeikjabord;
     @FXML
-    private Button fxTeningurTakki;
-    @FXML
     private ImageView fxTeningur;
     @FXML
     private ImageView player1Piece;
@@ -37,16 +36,35 @@ public class MainController {
     private ImageView player2Piece;
 
     private List<Node> reitir;
-    private Leikur leikur = new Leikur(2);
+    private Leikur leikur;
+    private String player1Nafn;
+    private String player2Nafn;
+
+    public Leikur getLeikur() {
+        return leikur;
+    }
 
     /**
      * Upphafsstillir leikbordid og setur upp bindingar
      */
     public void initialize() {
+        Object data = ViewSwitcher.getCurrentData();
+        if (data instanceof String[]) {
+            String[] playerNames = (String[]) data;
+            player1Nafn = playerNames[0];
+            player2Nafn = playerNames[1];
+            leikur = new Leikur(playerNames);
+        } else {
+            System.out.println("No player names provided, initializing with default names.");
+            String[] defaultNames = new String[]{"Player1", "Player2"};
+            leikur = new Leikur(defaultNames);
+        }
+
         reitir = fxLeikjabord.getChildren();
 
         fxTeningur.imageProperty().bind(Bindings.createObjectBinding(() ->
-                        new Image(getClass().getResource("/hi/verkefni/vidmot/myndir/" + leikur.kastaNidurstadaProperty().get() + ".jpg").toExternalForm()),
+                        new Image(getClass().getResource("/hi/verkefni/vidmot/myndir/"
+                                + leikur.kastaNidurstadaProperty().get() + ".jpg").toExternalForm()),
                 leikur.kastaNidurstadaProperty()
         ));
         fxSkilabod1.textProperty().bind(leikur.skilabod1Property());
@@ -150,5 +168,18 @@ public class MainController {
     protected void teningurHandler(ActionEvent event) {
         leikur.leikaLeik();
         Platform.runLater(() -> populateBoardWithItems());
+    }
+
+    public void setPlayerNames(String p1, String p2) {
+        if (leikur != null) {
+            leikur.getLeikmadur(0).setLeikmadur(p1);
+            leikur.getLeikmadur(1).setLeikmadur(p2);
+        } else {
+            System.err.println("Leikur is not initialized. Cannot set player names.");
+        }
+    }
+
+    public void setLeikur(Leikur leikur) {
+        this.leikur = leikur;
     }
 }

@@ -2,6 +2,7 @@ package hi.verkefni.vidmot;
 
 import hi.verkefni.vinnsla.Item;
 import hi.verkefni.vinnsla.Leikmadur;
+import hi.verkefni.vinnsla.ResultData;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
@@ -38,12 +39,19 @@ public class FightSceneController {
     private Label p2DefenceLabel;
 
     @FXML
+    private Label fxPlayer1Nafn;
+    @FXML
+    private Label fxPlayer2Nafn;
+
+
+    @FXML
     private TextArea fightLogTextArea;
 
     private Leikmadur player1;
     private Leikmadur player2;
     private int player1HP = 99;
     private int player2HP = 99;
+
 
     @FXML
     public void initialize() {
@@ -52,9 +60,10 @@ public class FightSceneController {
             List<Leikmadur> players = (List<Leikmadur>) data;
             if (players.size() >= 2) {
                 player1 = players.get(0);
+                fxPlayer1Nafn.setText(player1.getLeikmadur());
+
                 player2 = players.get(1);
-                //System.out.println("leikmadur 1 besta vopn: " + player1.getBestaVopn());
-                //System.out.println("leikmadur 2 besta vopn: " + player2.getBestaVopn());
+                fxPlayer2Nafn.setText(player2.getLeikmadur());
 
                 if (player1.getBestaVopn() != null) {
                     ImageView weaponImageView = createImageViewForItem(player1.getBestaVopn());
@@ -109,11 +118,11 @@ public class FightSceneController {
             }
 
             if (firstAttackerIsP1) {
-                fightLogTextArea.appendText("Player 1 hits Player 2 for " + damageToP2 + " damage. (Player 2 HP: " + player2HP + ")\n");
-                fightLogTextArea.appendText("Player 2 hits Player 1 for " + damageToP1 + " damage. (Player 1 HP: " + player1HP + ")\n\n");
+                fightLogTextArea.appendText(player1.getLeikmadur() + " hits " + player2.getLeikmadur() + " for " + damageToP2 + " damage. (" + player2.getLeikmadur() + " HP: " + player2HP + ")\n");
+                fightLogTextArea.appendText(player2.getLeikmadur() + " hits " + player1.getLeikmadur() + " for " + damageToP1 + " damage. (" + player1.getLeikmadur() + " HP: " + player1HP + ")\n\n");
             } else {
-                fightLogTextArea.appendText("Player 2 hits Player 1 for " + damageToP1 + " damage. (Player 1 HP: " + player1HP + ")\n");
-                fightLogTextArea.appendText("Player 1 hits Player 2 for " + damageToP2 + " damage. (Player 2 HP: " + player2HP + ")\n\n");
+                fightLogTextArea.appendText(player2.getLeikmadur() + " hits " + player1.getLeikmadur() + " for " + damageToP1 + " damage. (" + player1.getLeikmadur() + " HP: " + player1HP + ")\n");
+                fightLogTextArea.appendText(player1.getLeikmadur() + " hits " + player2.getLeikmadur() + " for " + damageToP2 + " damage. (" + player2.getLeikmadur() + " HP: " + player2HP + ")\n\n");
             }
 
             if (player1HP <= 0 || player2HP <= 0) {
@@ -121,13 +130,20 @@ public class FightSceneController {
                 if (player1HP <= 0 && player2HP <= 0) {
                     resultMessage = ((firstAttackerIsP1 ? "Player 1" : "Player 2") + " vann!\n");
                 } else if (player1HP <= 0) {
-                    resultMessage = ("Player 2 vann!\n");
+                    resultMessage = (player2.getLeikmadur() + " vann!\n");
                 } else {
-                    resultMessage = ("Player 1 vann!\n");
+                    resultMessage = (player1.getLeikmadur() + " vann!\n");
                 }
                 fightLogTextArea.appendText(resultMessage + "\n");
                 timeline.stop();
-                ViewSwitcher.switchTo(View.RESULT, resultMessage);
+
+                String[] playerNames = new String[]{
+                        player1.getLeikmadur(),
+                        player2.getLeikmadur()
+                };
+
+                ResultData resultData = new ResultData(resultMessage, playerNames);
+                ViewSwitcher.switchTo(View.RESULT, resultData);
             }
 
         });

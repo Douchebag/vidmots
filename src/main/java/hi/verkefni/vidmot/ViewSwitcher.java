@@ -1,11 +1,13 @@
 package hi.verkefni.vidmot;
 
+import hi.verkefni.vinnsla.Leikur;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+
 
 /**
  * Handles switching between different views in the application.
@@ -14,6 +16,15 @@ public class ViewSwitcher {
 
     private static Scene scene;
     private static Object currentData;
+    private static Leikur leikur;
+
+    public static void setLeikur(Leikur l) {
+        leikur = l;
+    }
+
+    public static Leikur getLeikur() {
+        return leikur;
+    }
 
     /**
      * Setur núverandi senu í ViewSwitcher sem scene - enginn breyting á glugga
@@ -32,13 +43,13 @@ public class ViewSwitcher {
     public static void switchTo(View view) {
         if (scene == null) {
             System.out.println("No scene was set");
-            return;
         }
 
         try {
             System.out.println("Loading from FXML: " + view.getFileName());
 
-            Parent root = FXMLLoader.load(ViewSwitcher.class.getResource("/hi/verkefni/vidmot/" + view.getFileName()));
+            FXMLLoader loader = new FXMLLoader(ViewSwitcher.class.getResource("/hi/verkefni/vidmot/" + view.getFileName()));
+            Parent root = loader.load();
 
             scene.setRoot(root);
 
@@ -54,6 +65,7 @@ public class ViewSwitcher {
                 stage.setHeight(260);
                 stage.setWidth(370);
             }
+
         } catch (IOException e) {
             e.printStackTrace();
         }

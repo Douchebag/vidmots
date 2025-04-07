@@ -1,0 +1,38 @@
+.root {
+    -fx-background-color: linear-gradient(to bottom, #2D2D2D, #2A2A2A);
+    -fx-font-family: "Old English Text MT", "Serif";
+}
+
+.label {
+    -fx-text-fill: #E0C068;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
+.button {
+    -fx-background-color: linear-gradient(to bottom, #6D4C41, #3B2F2F);
+    -fx-text-fill: #E0C068;
+    -fx-font-size: 16px;
+    -fx-font-family: "Old English Text MT", "Serif";
+    -fx-font-weight: bold;
+    -fx-border-color: #3B2F2F;
+    -fx-border-width: 2;
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+    -fx-padding: 10 20 10 20;
+}
+
+.button:hover {
+    -fx-background-color: linear-gradient(to bottom, #3B2F2F, #6D4C41);
+}
+
+.text-field {
+    -fx-background-color: #2D2D2D;
+    -fx-text-fill: white;
+    -fx-border-color: #3B2F2F;
+    -fx-border-width: 1;
+    -fx-background-radius: 3;
+    -fx-border-radius: 3;
+    -fx-padding: 5;
+    -fx-font-weight: bolder;
+}

@@ -19,7 +19,7 @@ public class MainApplication extends Application {
         ViewSwitcher.setScene(scene);
 
         // skiptum yfir í viðmótstré fyrir LOGIN
-        ViewSwitcher.switchTo(View.BORD);
+        ViewSwitcher.switchTo(View.START);
 
         // tengjum senuna við gluggann
         stage.setScene(scene);

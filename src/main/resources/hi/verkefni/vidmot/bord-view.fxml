@@ -107,8 +107,8 @@
          <children>
             <VBox prefHeight="149.0" prefWidth="370.0" styleClass="skilabod-vbox" HBox.hgrow="ALWAYS">
                <children>
-                  <Label fx:id="fxSkilabod1" minHeight="47.0" prefHeight="60.0" prefWidth="442.0" styleClass="skilabod-label" text="skilabod 1" />
-                  <Label fx:id="fxSkilabod2" layoutX="10.0" layoutY="10.0" prefWidth="442.0" styleClass="skilabod-label" text="skilabod 2" />
+                  <Label fx:id="fxSkilabod1" wrapText="true" minHeight="47.0" prefHeight="60.0" prefWidth="429.0" styleClass="skilabod-label" text="skilabod 1" />
+                  <Label fx:id="fxSkilabod2" wrapText="true" layoutX="10.0" layoutY="10.0" prefHeight="60.0" prefWidth="429.0" styleClass="skilabod-label" text="skilabod 2" />
                </children>
             </VBox>
             <Button fx:id="fxTeningurTakki" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false" onAction="#teningurHandler" styleClass="teningur-takki">
