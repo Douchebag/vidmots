@@ -55,7 +55,6 @@ public class ViewSwitcher {
 
             Stage stage = (Stage) scene.getWindow();
             if (view == View.FIGHT) {
-
                 stage.setHeight(470);
                 stage.setWidth(800);
             } else if (view == View.BORD) {
@@ -65,6 +64,7 @@ public class ViewSwitcher {
                 stage.setHeight(260);
                 stage.setWidth(370);
             }
+            stage.centerOnScreen();
 
         } catch (IOException e) {
             e.printStackTrace();
