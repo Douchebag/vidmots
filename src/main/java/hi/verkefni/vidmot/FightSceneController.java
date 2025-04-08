@@ -111,7 +111,7 @@ public class FightSceneController {
         boolean firstAttackerIsP1 = Math.random() < 0.5;
 
         final Timeline timeline = new Timeline();
-        KeyFrame keyFrame = new KeyFrame(Duration.seconds(1), event -> {
+        KeyFrame keyFrame = new KeyFrame(Duration.seconds(1.5), event -> {
             int damageToP1 = 0;
             int damageToP2 = 0;
 
