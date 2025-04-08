@@ -80,10 +80,18 @@ public class Leikur {
         int kast = teningur.getTala().get();
         kastaNidurstada.set(kast);
 
-        if (leikmennProperties[nuverandiLeikmadur].get() < 24) {
+        int currentPos = leikmennProperties[nuverandiLeikmadur].get();
+        int otherIndex = (nuverandiLeikmadur + 1) % leikmenn.length;
+
+        if (currentPos < 24) {
             faeraLeikmann(kast);
         } else {
-            skilabod1.set(leikmenn[nuverandiLeikmadur].getLeikmadur() + " hefur klárað borðið.");
+            if (leikmennProperties[otherIndex].get() < 24){
+                nuverandiLeikmadur = otherIndex;
+                faeraLeikmann(kast);
+            } else {
+                skilabod1.set(leikmenn[nuverandiLeikmadur].getLeikmadur() + " hefur klárað borðið.");
+            }
         }
 
         boolean allFinished = true;
@@ -149,14 +157,20 @@ public class Leikur {
      * Uppfaerir hvor leikmadurinn á ad gera naest
      */
     private void setjaNaestaLeikmann() {
-        nuverandiLeikmadur = (nuverandiLeikmadur + 1) % leikmenn.length;
+        int otherIndex = (nuverandiLeikmadur + 1) % leikmenn.length;
+        if (leikmennProperties[nuverandiLeikmadur].get() >= 24 && leikmennProperties[otherIndex].get() < 24) {
+            nuverandiLeikmadur = otherIndex;
+        } else if (leikmennProperties[otherIndex].get() >= 24 && leikmennProperties[nuverandiLeikmadur].get() < 24) {
+            nuverandiLeikmadur = nuverandiLeikmadur;
+        } else {
+            nuverandiLeikmadur = (nuverandiLeikmadur + 1) % leikmenn.length;
+        }
+
         if (nuverandiLeikmadur == 0) {
             naestiLeikmadur.set(leikmenn[0].getLeikmadur());
         } else {
             naestiLeikmadur.set(leikmenn[1].getLeikmadur());
         }
-
-        //System.out.println("Naesti leikmadur er " + naestiLeikmadur.get());
         skilabod2.set("Naesti leikmadur er " + naestiLeikmadur.get());
     }
 
