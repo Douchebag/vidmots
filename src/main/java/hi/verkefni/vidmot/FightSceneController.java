@@ -7,10 +7,14 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -45,7 +49,9 @@ public class FightSceneController {
 
 
     @FXML
-    private TextArea fightLogTextArea;
+    private TextFlow fightLogTextFlow;
+    @FXML
+    private ScrollPane fightLogScrollPane;
 
     private Leikmadur player1;
     private Leikmadur player2;
@@ -55,6 +61,10 @@ public class FightSceneController {
 
     @FXML
     public void initialize() {
+        fightLogTextFlow.heightProperty().addListener((obs, oldHeight, newHeight) -> {
+            fightLogScrollPane.setVvalue(1.0);
+        });
+
         Object data = ViewSwitcher.getCurrentData();
         if (data instanceof List) {
             List<Leikmadur> players = (List<Leikmadur>) data;
@@ -118,11 +128,43 @@ public class FightSceneController {
             }
 
             if (firstAttackerIsP1) {
-                fightLogTextArea.appendText(player1.getLeikmadur() + " hits " + player2.getLeikmadur() + " for " + damageToP2 + " damage. (" + player2.getLeikmadur() + " HP: " + player2HP + ")\n");
-                fightLogTextArea.appendText(player2.getLeikmadur() + " hits " + player1.getLeikmadur() + " for " + damageToP1 + " damage. (" + player1.getLeikmadur() + " HP: " + player1HP + ")\n\n");
+                Color color1 = (damageToP2 > 0) ? Color.RED : Color.BLUE;
+                Color color2 = (damageToP1 > 0) ? Color.RED : Color.BLUE;
+
+                appendLogLine(
+                        player1.getLeikmadur() + " hits " + player2.getLeikmadur() + " for " + damageToP2 + " damage. (",
+                        player2.getLeikmadur() + " HP: ",
+                        player2HP,
+                        ")",
+                        color1
+                );
+                appendLogLine(
+                        player2.getLeikmadur() + " hits " + player1.getLeikmadur() + " for " + damageToP1 + " damage. (",
+                        player1.getLeikmadur() + " HP: ",
+                        player1HP,
+                        ")",
+                        color2
+                );
+                fightLogTextFlow.getChildren().add(new Text("\n"));
             } else {
-                fightLogTextArea.appendText(player2.getLeikmadur() + " hits " + player1.getLeikmadur() + " for " + damageToP1 + " damage. (" + player1.getLeikmadur() + " HP: " + player1HP + ")\n");
-                fightLogTextArea.appendText(player1.getLeikmadur() + " hits " + player2.getLeikmadur() + " for " + damageToP2 + " damage. (" + player2.getLeikmadur() + " HP: " + player2HP + ")\n\n");
+                Color color1 = (damageToP1 > 0) ? Color.RED : Color.BLUE;
+                Color color2 = (damageToP2 > 0) ? Color.RED : Color.BLUE;
+
+                appendLogLine(
+                        player2.getLeikmadur() + " hits " + player1.getLeikmadur() + " for " + damageToP1 + " damage. (",
+                        player1.getLeikmadur() + " HP: ",
+                        player1HP,
+                        ")",
+                        color1
+                );
+                appendLogLine(
+                        player1.getLeikmadur() + " hits " + player2.getLeikmadur() + " for " + damageToP2 + " damage. (",
+                        player2.getLeikmadur() + " HP: ",
+                        player2HP,
+                        ")",
+                        color2
+                );
+                fightLogTextFlow.getChildren().add(new Text("\n"));
             }
 
             if (player1HP <= 0 || player2HP <= 0) {
@@ -134,7 +176,9 @@ public class FightSceneController {
                 } else {
                     resultMessage = (player1.getLeikmadur() + " vann!\n");
                 }
-                fightLogTextArea.appendText(resultMessage + "\n");
+                Text resultText = new Text(resultMessage + "\n");
+                resultText.setFill(Color.WHITE);
+                fightLogTextFlow.getChildren().add(resultText);
                 timeline.stop();
 
                 String[] playerNames = new String[]{
@@ -152,6 +196,16 @@ public class FightSceneController {
         timeline.play();
     }
 
+    private void appendLogLine(String prefix, String hpText, int hpValue, String suffix, Color messageColor) {
+        Text t1 = new Text(prefix);
+        t1.setFill(messageColor);
+        Text t2 = new Text(hpText + hpValue);
+        t2.setFill(Color.GREEN);
+        Text t3 = new Text(suffix + "\n");
+        t3.setFill(messageColor);
+        fightLogTextFlow.getChildren().addAll(t1, t2, t3);
+    }
+
     private int calculateDamage(Leikmadur attacker, Leikmadur defender) {
         int attackBonus = (attacker.getBestaVopn() != null ? attacker.getBestaVopn().getBonus() : 5);
         int defenseBonus = (defender.getBestaBrynja() != null ? defender.getBestaBrynja().getBonus() : 5);
@@ -165,6 +219,8 @@ public class FightSceneController {
             return 0;
         }
     }
+
+
 
     /**
      * Býr til ImageView object fyrir item-id með því að loada mynd frá resource folderinu
